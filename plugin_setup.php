@@ -121,6 +121,9 @@ echo "<td> \n";
 echo "Hostname \n";
 echo "</td> \n";
 echo "<td> \n";
+echo "Uptime \n";
+echo "</td> \n";
+echo "<td> \n";
 echo "Processor Temp \n";
 echo "</td> \n";
 echo "<td> \n";
@@ -138,6 +141,9 @@ echo "<td> \n";
 echo tryGetHost($IP_ADDRESS);
 echo "</td> \n";
 
+echo "<td> \n";
+echo getFalconObjectValue($IP_ADDRESS, "fldUptime", "td");
+echo "</td> \n";
 
 $temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);

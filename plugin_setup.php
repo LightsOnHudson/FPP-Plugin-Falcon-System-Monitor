@@ -64,6 +64,8 @@ if(isset($_POST['submit']))
 	$ENABLED = urldecode($pluginSettings['ENABLED']);
 	
 	
+	//test variables
+	$IP_ADDRESS = "10.0.0.106";
 ?>
 
 <html>
@@ -124,7 +126,7 @@ echo "</td> \n";
 echo "<td> \n";
 echo "Processor Temp: \n";
 echo "</td> \n";
-$IP_ADDRESS = "10.0.0.106";
+
 $temp_processor = getProcessorTemp($IP_ADDRESS);
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";

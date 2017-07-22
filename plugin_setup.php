@@ -115,29 +115,34 @@ echo "</th> \n";
 echo "<tr> \n";
 
 echo "<td> \n";
+echo "IP Address \n";
+echo "</td> \n";
+echo "<td> \n";
+echo "Hostname \n";
+echo "</td> \n";
+echo "Processor Temp \n";
+echo "</td> \n";
+echo "</tr> \n";
+
+echo "<tr> \n";
+echo "<td> \n";
 PrintFalconSystemsSelect();
 echo $IP_ADDRESS;
 echo "</td> \n";
-echo "<td> \n";
-echo "hostname: \n";
-echo "</td> \n";
+
 echo "<td> \n";
 echo tryGetHost($IP_ADDRESS);
 echo "</td> \n";
-echo "<td> \n";
-echo "Processor Temp: \n";
-echo "</td> \n";
+
 
 $temp_processor = getProcessorTemp($IP_ADDRESS);
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";
 echo $temp_processor;
-echo "</td> \n";
-echo "<td> \n";
-echo "Farenheight: \n";
-echo "</td> \n";
-echo "<td> \n";
+echo "(C) \n";
+
 echo $farenheight_temp_processor;
+echo "(F) \n";
 echo "</td> \n";
 echo "</tr> \n";
 

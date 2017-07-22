@@ -2,7 +2,7 @@
 
 //celcius to farenhieht
 function celciusToFarenheight($celcius) {
-	return Math.round(((9/5)*$celcius)+32);
+	return round(((9/5)*$celcius)+32);
 	
 }
 

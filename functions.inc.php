@@ -13,18 +13,13 @@ function getProcessorTemp($IP_ADDRESS) {
 	
 	$elements = getAllFalconObjects($IP_ADDRESS);
 	
-	libxml_use_internal_errors( true);
-	$doc = new DOMDocument;
-	$doc->loadHTML( $elements);
-	$xpath = new DOMXpath( $doc);
 	
+	$doc = new DOMDocument();
+	$doc->loadHTML($elements);
+	foreach ($doc->getElementsByTagName('div') as $node) {
+		echo $doc->saveHtml($node), PHP_EOL;
+	}
 	
-	$PROCESSOR_TEMP_ID = "fldChipTemp";
-	
-	// A name attribute on a <div>???
-	$node = $xpath->query( '//div[@name="fldChipTemp"')->item( 0);
-	
-	return $node->textContent; // This will print **GET THIS TEXT**
 }
 
 

@@ -104,6 +104,25 @@ echo "ENABLE PLUGIN: ";
 //}
 echo "<p/>\n";
 
+//get a list of falcon controllers
+echo "<table border=\1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
+
+echo "<th colspan=\"4\"> \n";
+echo "Falcon System Monitoring \n";
+echo "</th> \n";
+echo "<tr> \n";
+
+echo "<td> \n";
+PrintFalconSystemsSelect();
+echo "</td> \n";
+echo "<td> \n";
+echo "<input type=\"text\" size=\"15\" name=\"temp_processor\" value=\"".$temp_processor."\"> \n";
+echo "</td> \n";
+echo "</tr> \n";
+
+echo "</table> \n";
+
+
 ?>
 <p/>
 <input id="submit_button" name="submit" type="submit" class="buttons" value="Save Config">

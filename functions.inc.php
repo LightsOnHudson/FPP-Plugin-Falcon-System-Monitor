@@ -1,4 +1,49 @@
 <?php
+
+//function to get all the falcon system elements
+function PrintFalconSystemsSelect() {
+	
+	return;
+}
+
+
+//get the processor temp
+//get all items and then get the processor temp
+function getProcessorTemp($IP_ADDRESS) {
+	
+	$elements = getAllFalconObjects($IP_ADDRESS);
+	
+	foreach($elements->find('element') as $ele) {
+		
+		print_r($ele);
+		
+	}
+	
+}
+
+
+//get all the falcon telements
+function getAllFalconObjects($IP_ADDRESS) {
+	
+	global $DEBUG;
+	logEntry("Inside getting all falcon objects for ip address: ".$IP_ADDRESS);
+	
+	//for the falcon board
+	//index.htm
+	
+	$URL = $IP_ADDRESS."/index.htm";
+	$elements= file_get_html($URL);
+	
+	return $elements;
+	//foreach($elements->find('element') as $ele) {
+		
+	//	print_r($ele);
+		
+	//}
+	
+	//return or output
+}
+
 function sendTCP($IP, $PORT, $cmd) {
 	
 	

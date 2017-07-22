@@ -116,6 +116,7 @@ echo "<tr> \n";
 
 echo "<td> \n";
 PrintFalconSystemsSelect();
+echo $IP_ADDRESS;
 echo "</td> \n";
 echo "<td> \n";
 echo "hostname: \n";

@@ -37,7 +37,7 @@ function getAllFalconObjects($IP_ADDRESS) {
 	//for the falcon board
 	//index.htm
 	
-	$URL = $IP_ADDRESS."/index.htm";
+	$URL = "http://".$IP_ADDRESS."/index.htm";
 	//$elements= file_get_html($URL);
 	$elements = file_get_contents($URL);
 	return $elements;

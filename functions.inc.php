@@ -15,16 +15,16 @@ function getProcessorTemp($IP_ADDRESS) {
 	
 	
 	$doc = new DOMDocument();
-	$doc->loadHTML($elements);
-	foreach ($doc->getElementsByTagName('div') as $node) {
-		//echo $doc->saveHtml($node), PHP_EOL;
+	$doc->loadHTML($html);
+	$xpath = new DOMXPath($doc);
+	
+	$result = $xpath->evaluate("//td[@id='fldChipTemp']");
+	foreach ($result as $node) {
 		
-		if($doc->getElementById('fldChipTemp') != "") {
-			
-			logEntry("We got a processor temp node id");
-			return $doc->getElementById('fldChipTemp');
-		}
+		return $node->nodeValue;
+		
 	}
+			
 	
 }
 

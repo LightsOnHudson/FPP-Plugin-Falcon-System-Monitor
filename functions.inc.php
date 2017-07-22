@@ -1,5 +1,11 @@
 <?php
 
+//celcius to farenhieht
+function celciusToFarenheight($celcius) {
+	return Math.round(((9/5)*$celcius)+32);
+	
+}
+
 //function to get all the falcon system elements
 function PrintFalconSystemsSelect() {
 	

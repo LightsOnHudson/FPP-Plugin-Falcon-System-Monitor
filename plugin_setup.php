@@ -120,8 +120,15 @@ echo "Processor Temp: \n";
 echo "</td> \n";
 $IP_ADDRESS = "10.0.0.106";
 $temp_processor = getProcessorTemp($IP_ADDRESS);
+$farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";
 echo "<input type=\"text\" size=\"15\" name=\"temp_processor\" value=\"".$temp_processor."\"> \n";
+echo "</td> \n";
+echo "<td> \n";
+echo "Farenheight: \n";
+echo "</td> \n";
+echo "<td> \n";
+echo $farenheight_temp_processor;
 echo "</td> \n";
 echo "</tr> \n";
 

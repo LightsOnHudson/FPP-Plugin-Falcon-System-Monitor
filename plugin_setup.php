@@ -139,7 +139,7 @@ echo tryGetHost($IP_ADDRESS);
 echo "</td> \n";
 
 
-$temp_processor = getProcessorTemp($IP_ADDRESS);
+$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "id");
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";
 echo $temp_processor;

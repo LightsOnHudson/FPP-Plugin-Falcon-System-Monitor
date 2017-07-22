@@ -130,7 +130,7 @@ echo "</td> \n";
 $temp_processor = getProcessorTemp($IP_ADDRESS);
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";
-echo "<input type=\"text\" size=\"15\" name=\"temp_processor\" value=\"".$temp_processor."\"> \n";
+echo $temp_processor;
 echo "</td> \n";
 echo "<td> \n";
 echo "Farenheight: \n";

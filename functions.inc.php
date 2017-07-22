@@ -15,7 +15,7 @@ function getProcessorTemp($IP_ADDRESS) {
 	
 	
 	$doc = new DOMDocument();
-	$doc->loadHTML($html);
+	$doc->loadHTML($elements);
 	$xpath = new DOMXPath($doc);
 	
 	$result = $xpath->evaluate("//td[@id='fldChipTemp']");

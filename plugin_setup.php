@@ -123,6 +123,9 @@ echo "</td> \n";
 echo "<td> \n";
 echo "Processor Temp \n";
 echo "</td> \n";
+echo "<td> \n";
+echo "Active/configured Universes \n";
+echo "</td> \n";
 echo "</tr> \n";
 
 echo "<tr> \n";
@@ -144,6 +147,9 @@ echo "(C) \n";
 
 echo $farenheight_temp_processor;
 echo "(F) \n";
+echo "</td> \n";
+echo "<td> \n";
+echo getFalconObjectValue($IP_ADDRESS, "lblUniverseCount");
 echo "</td> \n";
 echo "</tr> \n";
 

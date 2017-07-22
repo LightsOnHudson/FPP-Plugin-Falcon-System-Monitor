@@ -40,6 +40,25 @@ function PrintFalconSystemsSelect() {
 }
 
 
+//get a specific falcon id object from an ip address status page
+function getFalconObjectValue($IP_ADDRESS, $objectName) {
+	
+	global $DEBUG;
+	$elements = getAllFalconObjects($IP_ADDRESS);
+	
+	
+	$doc = new DOMDocument();
+	$doc->loadHTML($elements);
+	$xpath = new DOMXPath($doc);
+	
+	$result = $xpath->evaluate("//td[@id='$objectName']");
+	foreach ($result as $node) {
+		
+		return $node->nodeValue;
+		
+	}
+}
+
 //get the processor temp
 //get all items and then get the processor temp
 function getProcessorTemp($IP_ADDRESS) {

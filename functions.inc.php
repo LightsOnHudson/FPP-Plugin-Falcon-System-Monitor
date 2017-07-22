@@ -17,7 +17,13 @@ function getProcessorTemp($IP_ADDRESS) {
 	$doc = new DOMDocument();
 	$doc->loadHTML($elements);
 	foreach ($doc->getElementsByTagName('div') as $node) {
-		echo $doc->saveHtml($node), PHP_EOL;
+		//echo $doc->saveHtml($node), PHP_EOL;
+		
+		if($doc->getElementById('fldChipTemp') != "") {
+			
+			logEntry("We got a processor temp node id");
+			return $doc->getElementById('fldChipTemp');
+		}
 	}
 	
 }

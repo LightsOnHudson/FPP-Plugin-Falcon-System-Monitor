@@ -111,7 +111,7 @@ echo "<p/>\n";
 
 
 <p>To report a bug, please file it against the  plug-in project on Git: <? echo $gitURL;?>
-<form method="post" action="http://<? echo $_SERVER['SERVER_ADDR'].":".$_SERVER['SERVER_PORT']?>/plugin.php?plugin=".$pluginName."&page=plugin_setup.php">
+<form method="post" action="http://<? echo $_SERVER['SERVER_ADDR'].":".$_SERVER['SERVER_PORT']?>/plugin.php?plugin=<?echo $pluginName;?>&page=plugin_setup.php">
 <?
  if(file_exists($pluginUpdateFile))
  {

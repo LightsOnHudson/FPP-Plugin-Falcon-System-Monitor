@@ -120,6 +120,7 @@ echo "</td> \n";
 echo "<td> \n";
 echo "Hostname \n";
 echo "</td> \n";
+echo "<td> \n";
 echo "Processor Temp \n";
 echo "</td> \n";
 echo "</tr> \n";

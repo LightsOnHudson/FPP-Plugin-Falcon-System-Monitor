@@ -41,7 +41,7 @@ function PrintFalconSystemsSelect() {
 
 
 //get a specific falcon id object from an ip address status page
-function getFalconObjectValue($IP_ADDRESS, $objectName) {
+function getFalconObjectValue($IP_ADDRESS, $objectName, $objectType) {
 	
 	global $DEBUG;
 	$elements = getAllFalconObjects($IP_ADDRESS);
@@ -51,7 +51,7 @@ function getFalconObjectValue($IP_ADDRESS, $objectName) {
 	$doc->loadHTML($elements);
 	$xpath = new DOMXPath($doc);
 	
-	$result = $xpath->evaluate("//td[@id='$objectName']");
+	$result = $xpath->evaluate("//".$objectType."[@id='$objectName']");
 	foreach ($result as $node) {
 		
 		return $node->nodeValue;

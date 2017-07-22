@@ -149,7 +149,7 @@ echo $farenheight_temp_processor;
 echo "(F) \n";
 echo "</td> \n";
 echo "<td> \n";
-echo getFalconObjectValue($IP_ADDRESS, "lblUniverseCount");
+echo getFalconObjectValue($IP_ADDRESS, "lblUniverseCount", "label");
 echo "</td> \n";
 echo "</tr> \n";
 

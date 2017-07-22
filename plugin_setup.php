@@ -121,7 +121,7 @@ echo "<td> \n";
 echo "hostname: \n";
 echo "</td> \n";
 echo "<td> \n";
-echo gethostbyaddr($_SERVER["$IP_ADDRESS"]);
+echo tryGetHost($IP_ADDRESS);
 echo "</td> \n";
 echo "<td> \n";
 echo "Processor Temp: \n";

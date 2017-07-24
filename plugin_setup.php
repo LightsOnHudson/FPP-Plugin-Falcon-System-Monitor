@@ -114,7 +114,7 @@ echo "ENABLE PLUGIN: ";
 echo "<p/>\n";
 
 //get a list of falcon controllers
-echo "<table border=\1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
+echo "<table border=\"1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
 
 
 
@@ -181,6 +181,8 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	echo "No controllers configured for monitoring, use the box below to enter them. Comma separated \n";
 	echo "</th> \n";
 }
+echo "</table> \n";
+echo "<table border=\"1\" cellspacing=\"1\" cellpadding=\"2\"> \n";
 echo "<tr> \n";
 echo "<td> \n";
 echo "Controller IPs to monitor (comma separated): \n";

@@ -1,6 +1,6 @@
 <?php
 //get a specific falcon id object from an ip address status page
-function getFalconObjectValue($falconData, $objectName, $objectType) {
+function getFalconObjectValueFromData($falconData, $objectName, $objectType) {
 	
 	global $DEBUG;
 	//$elements = getAllFalconObjects($IP_ADDRESS);

@@ -59,6 +59,12 @@ if(isset($_POST['submit']))
 } 
 
 
+$pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
+if (file_exists($pluginConfigFile))
+	$pluginSettings = parse_ini_file($pluginConfigFile);
+	
+	
+	
 	
 	
 	//$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);

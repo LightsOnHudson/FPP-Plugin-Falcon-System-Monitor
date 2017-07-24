@@ -1,5 +1,22 @@
 <?php
-
+//get a specific falcon id object from an ip address status page
+function getFalconObjectValue($falconData, $objectName, $objectType) {
+	
+	global $DEBUG;
+	//$elements = getAllFalconObjects($IP_ADDRESS);
+	
+	
+	$doc = new DOMDocument();
+	$doc->loadHTML($falconData);
+	$xpath = new DOMXPath($doc);
+	
+	$result = $xpath->evaluate("//".$objectType."[@id='$objectName']");
+	foreach ($result as $node) {
+		
+		return $node->nodeValue;
+		
+	}
+}
 
 function tryGetHost($ip)
 {
@@ -94,13 +111,7 @@ function getAllFalconObjects($IP_ADDRESS) {
 	//$elements= file_get_html($URL);
 	$elements = file_get_contents($URL);
 	return $elements;
-	//foreach($elements->find('element') as $ele) {
-		
-	//	print_r($ele);
-		
-	//}
-	
-	//return or output
+
 }
 
 function sendTCP($IP, $PORT, $cmd) {

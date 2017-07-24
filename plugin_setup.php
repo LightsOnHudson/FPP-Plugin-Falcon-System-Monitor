@@ -130,7 +130,8 @@ echo "<td> \n";
 echo "Active/configured Universes \n";
 echo "</td> \n";
 echo "</tr> \n";
-
+//get the falcon data for this IP address
+$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 echo "<tr> \n";
 echo "<td> \n";
 PrintFalconSystemsSelect();
@@ -142,10 +143,10 @@ echo tryGetHost($IP_ADDRESS);
 echo "</td> \n";
 
 echo "<td> \n";
-echo getFalconObjectValue($IP_ADDRESS, "fldUptime", "td");
+$temp_processor = getFalconObjectValueFromData($falconData, "fldChipTemp", "td");
 echo "</td> \n";
-
-$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
+//getFalconObjectValue($falconData, "fldChipTemp", "td");
+//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
 $farenheight_temp_processor = celciusToFarenheight($temp_processor);
 echo "<td> \n";
 echo $temp_processor;
@@ -155,7 +156,7 @@ echo $farenheight_temp_processor;
 echo "(F) \n";
 echo "</td> \n";
 echo "<td> \n";
-echo getFalconObjectValue($IP_ADDRESS, "lblUniverseCount", "label");
+echo getFalconObjectValueFromData($falconData, "lblUniverseCount", "label");
 echo "</td> \n";
 echo "</tr> \n";
 

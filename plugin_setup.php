@@ -47,11 +47,12 @@ if(isset($_POST['submit']))
 	
 	
 	//$ENABLED=$_POST["ENABLED"];
+	$CONTROLLER_IPS = $_POST["CONTROLLER_IPS"];
 
 	//	echo "Writring config fie <br/> \n";
 
 
-//	WriteSettingToFile("PROJ_PASSWORD",urlencode($_POST["PROJ_PASSWORD"]),$pluginName);
+	WriteSettingToFile("CONTROLLER_IPS",urlencode($_POST["CONTROLLER_IPS"]),$pluginName);
 
 	
 
@@ -62,7 +63,7 @@ if(isset($_POST['submit']))
 	
 	//$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 	$ENABLED = urldecode($pluginSettings['ENABLED']);
-	
+	$CONTROLLER_IPS = urldecode($pluginSettings['CONTROLLER_IPS']);
 	
 	//test variables
 	$IP_ADDRESS = "10.0.0.106";
@@ -130,38 +131,56 @@ echo "<td> \n";
 echo "Active/configured Universes \n";
 echo "</td> \n";
 echo "</tr> \n";
-//get the falcon data for this IP address
-$falconSystemData = getAllFalconObjects($IP_ADDRESS);
+
+if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
+	$FALCON_IPS = explode(",",$CONTROLLER_IPS);
+	
+	foreach ($FALCON_IPS as $IP_ADDRESS) {
+		//get the falcon data for this IP address
+		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
+		echo "<tr> \n";
+		echo "<td> \n";
+		PrintFalconSystemsSelect();
+		echo $IP_ADDRESS;
+		echo "</td> \n";
+		
+		echo "<td> \n";
+		echo tryGetHost($IP_ADDRESS);
+		echo "</td> \n";
+		
+		echo "<td> \n";
+		echo getFalconObjectValueFromData($falconSystemData, "fldUptime", "td");
+		
+		echo "</td> \n";
+		$temp_processor = getFalconObjectValueFromData($falconSystemData, "fldChipTemp", "td");
+		//getFalconObjectValue($falconData, "fldChipTemp", "td");
+		//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
+		$farenheight_temp_processor = celciusToFarenheight($temp_processor);
+		echo "<td> \n";
+		echo $temp_processor;
+		echo "(C) \n";
+		
+		echo $farenheight_temp_processor;
+		echo "(F) \n";
+		echo "</td> \n";
+		echo "<td> \n";
+		echo getFalconObjectValueFromData($falconSystemData, "lblUniverseCount", "label");
+		echo "</td> \n";
+		echo "</tr> \n";
+	}
+} else {
+	echo "<th colspan=\"3\"> \n";
+	echo "No controllers configured for monitoring, use the box below to enter them. Comma separated \n";
+	echo "</th> \n";
+}
 echo "<tr> \n";
 echo "<td> \n";
-PrintFalconSystemsSelect();
-echo $IP_ADDRESS;
-echo "</td> \n";
-
-echo "<td> \n";
-echo tryGetHost($IP_ADDRESS);
-echo "</td> \n";
-
-echo "<td> \n";
-echo getFalconObjectValueFromData($falconSystemData, "fldUptime", "td");
-
-echo "</td> \n";
-$temp_processor = getFalconObjectValueFromData($falconSystemData, "fldChipTemp", "td");
-//getFalconObjectValue($falconData, "fldChipTemp", "td");
-//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
-$farenheight_temp_processor = celciusToFarenheight($temp_processor);
-echo "<td> \n";
-echo $temp_processor;
-echo "(C) \n";
-
-echo $farenheight_temp_processor;
-echo "(F) \n";
+echo "Controller IPs to monitor (comma separated): \n";
 echo "</td> \n";
 echo "<td> \n";
-echo getFalconObjectValueFromData($falconSystemData, "lblUniverseCount", "label");
+echo "<input type=\"text\" size=\"128\" name=\"CONTROLLER_IPS\" value=\"".$CONTROLLER_IPS."\"> \n";
 echo "</td> \n";
 echo "</tr> \n";
-
 echo "</table> \n";
 
 

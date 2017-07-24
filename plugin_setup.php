@@ -110,29 +110,31 @@ echo "<p/>\n";
 //get a list of falcon controllers
 echo "<table border=\1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
 
-echo "<th colspan=\"4\"> \n";
-echo "Falcon System Monitoring \n";
-echo "</th> \n";
-echo "<tr> \n";
 
-echo "<td> \n";
-echo "IP Address \n";
-echo "</td> \n";
-echo "<td> \n";
-echo "Hostname \n";
-echo "</td> \n";
-echo "<td> \n";
-echo "Uptime \n";
-echo "</td> \n";
-echo "<td> \n";
-echo "Processor Temp \n";
-echo "</td> \n";
-echo "<td> \n";
-echo "Active/configured Universes \n";
-echo "</td> \n";
-echo "</tr> \n";
 
 if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
+	echo "<th colspan=\"4\"> \n";
+	echo "Falcon System Monitoring \n";
+	echo "</th> \n";
+	echo "<tr> \n";
+	
+	echo "<td> \n";
+	echo "IP Address \n";
+	echo "</td> \n";
+	echo "<td> \n";
+	echo "Hostname \n";
+	echo "</td> \n";
+	echo "<td> \n";
+	echo "Uptime \n";
+	echo "</td> \n";
+	echo "<td> \n";
+	echo "Processor Temp \n";
+	echo "</td> \n";
+	echo "<td> \n";
+	echo "Active/configured Universes \n";
+	echo "</td> \n";
+	echo "</tr> \n";
+	
 	$FALCON_IPS = explode(",",$CONTROLLER_IPS);
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {

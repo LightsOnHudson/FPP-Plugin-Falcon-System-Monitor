@@ -165,11 +165,15 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
 		$farenheight_temp_processor = celciusToFarenheight($temp_processor);
 		echo "<td> \n";
-		echo $temp_processor;
-		echo "(C) \n";
-		
-		echo $farenheight_temp_processor;
-		echo "(F) \n";
+		if($temp_processor != "" || $temp_processor != null) {
+			echo $temp_processor;
+			echo "(C) \n";
+			
+			echo $farenheight_temp_processor;
+			echo "(F) \n";
+		} else {
+			echo " \n";
+		}
 		echo "</td> \n";
 		echo "<td> \n";
 		echo getFalconObjectValueFromData($falconSystemData, "lblUniverseCount", "label");

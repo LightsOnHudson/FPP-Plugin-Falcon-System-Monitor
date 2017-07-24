@@ -188,7 +188,7 @@ echo "<td> \n";
 echo "Controller IPs to monitor (comma separated): \n";
 echo "</td> \n";
 echo "<td> \n";
-echo "<input type=\"text\" size=\"128\" name=\"CONTROLLER_IPS\" value=\"".$CONTROLLER_IPS."\"> \n";
+echo "<input type=\"text\" size=\"90\" name=\"CONTROLLER_IPS\" value=\"".$CONTROLLER_IPS."\"> \n";
 echo "</td> \n";
 echo "</tr> \n";
 echo "</table> \n";

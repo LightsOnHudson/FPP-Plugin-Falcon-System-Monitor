@@ -29,7 +29,7 @@ logEntry("plugin update file: ".$pluginUpdateFile);
 
 //logEntry("open log file: ".$logFile);
 
-$ALL_HARDWARE_VALUES = array("UPTIME" => "fldUptime","Chip Temp" => "fldChipTemp");
+$ALL_HARDWARE_VALUES = array("UPTIME" => "fldUptime","Processor Temp" => "fldChipTemp");
 
 $DEBUG = false;
 
@@ -51,7 +51,7 @@ if(isset($_POST['submit']))
 
 	//	echo "Writring config fie <br/> \n";
 
-	$PLUGINS =  implode(',', $_POST["PLUGINS"]);
+	$PLUGINS =  implode(',', $HARDWARE_VALUES);
 	WriteSettingToFile("CONTROLLER_IPS",urlencode($_POST["CONTROLLER_IPS"]),$pluginName);
 	WriteSettingToFile("HARDWARE_VALUES",$HARDWARE_VALUES,$pluginName);
 	
@@ -115,6 +115,7 @@ echo "ENABLE PLUGIN: ";
 //}
 echo "<p/>\n";
 
+echo "Values to include in monitoring: <br/> \n";
 //print the hardware values available and wanting to see
 printHardwareValues($HARDWARE_VALUES);
 echo "<p/>\n";

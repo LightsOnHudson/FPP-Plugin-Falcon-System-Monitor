@@ -196,7 +196,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 				echo tryGetHost($IP_ADDRESS);
 				echo "</td> \n";
 				
-				echo "<td> \n";
+				
 				if($value == "fldChipTemp") {
 				
 				
@@ -212,15 +212,17 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 						
 						echo $farenheight_temp_processor;
 						echo "(F) \n";
+						echo "</td> \n";
 					} else {
 						echo " \n";
 					}
 				} else {
-			
+					echo "<td> \n";
 					echo getFalconObjectValueFromData($falconSystemData, $value, "td");
 					echo "</td> \n";
-					echo "</tr> \n";
+					
 				}
+				echo "</tr> \n";
 			}
 		}
 	}

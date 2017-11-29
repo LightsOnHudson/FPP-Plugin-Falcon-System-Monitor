@@ -146,7 +146,7 @@ if($DEBUG) {
 if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	$FALCON_IPS = explode(",",$CONTROLLER_IPS);
-	echo "<th colspan=\"".count($HARDWARE_VALUES_READ) - 1 . "\"> \n";
+	echo "<th colspan=\"".(count($HARDWARE_VALUES_READ) - 1). "\"> \n";
 	echo "Falcon System Monitoring \n";
 	echo "</th> \n";
 	echo "<tr> \n";

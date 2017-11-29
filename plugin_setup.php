@@ -177,32 +177,31 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
+		
+		//get the falcon data for this IP address
+		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
+		echo "<tr> \n";
+		echo "<td> \n";
+		PrintFalconSystemsSelect();
+		echo $IP_ADDRESS;
+		echo "</td> \n";
+		
+		echo "<td> \n";
+		echo tryGetHost($IP_ADDRESS);
+		echo "</td> \n";
+		
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
 	foreach($ALL_HARDWARE_VALUES as $key => $value) {
 		if(in_array($value,$HARDWARE_VALUES_READ)) {
-			
-			
-	
 	
 			
-				//get the falcon data for this IP address
-				$falconSystemData = getAllFalconObjects($IP_ADDRESS);
-				echo "<tr> \n";
-				echo "<td> \n";
-				PrintFalconSystemsSelect();
-				echo $IP_ADDRESS;
-				echo "</td> \n";
-				
-				echo "<td> \n";
-				echo tryGetHost($IP_ADDRESS);
-				echo "</td> \n";
 				
 				
 				if($value == "fldChipTemp") {
 				
 				
 				
-					$temp_processor = getFalconObjectValueFromData($falconSystemData, "fldChipTemp", "td");
+					$temp_processor = getFalconObjectValueFromData($falconSystemData, $value, "td");
 					//getFalconObjectValue($falconData, "fldChipTemp", "td");
 					//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
 					$farenheight_temp_processor = celciusToFarenheight($temp_processor);
@@ -215,7 +214,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 						echo "(F) \n";
 						echo "</td> \n";
 					} else {
-						echo " \n";
+						//echo " \n";
 					}
 				} else {
 					echo "<td> \n";
@@ -227,6 +226,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 			}
 			
 		}
+		
 		echo "</tr> \n";
 	}
 	

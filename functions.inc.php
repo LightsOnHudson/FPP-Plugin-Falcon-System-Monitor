@@ -65,6 +65,9 @@ function getFalconObjectValueFromData($falconData, $objectName, $objectType) {
 function tryGetHost($ip)
 {
 	$string = '';
+	
+	$string = gethostbyaddr($ip);
+	return $string;
 	exec("dig +short -x $ip 2>&1", $output, $retval);
 	if ($retval != 0)
 	{

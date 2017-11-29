@@ -123,7 +123,7 @@ echo "ENABLE PLUGIN: ";
 //}
 echo "<p/>\n";
 
-echo "Values to include in monitoring: <br/> \n";
+echo "Select the values to include in monitoring: \n";
 //print the hardware values available and wanting to see
 printHardwareValues($HARDWARE_VALUES);
 echo "<p/>\n";

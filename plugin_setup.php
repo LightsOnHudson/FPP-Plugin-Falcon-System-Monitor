@@ -222,8 +222,9 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 					echo "</td> \n";
 					
 				}
-				echo "</tr> \n";
+				
 			}
+			echo "</tr> \n";
 		}
 	}
 	

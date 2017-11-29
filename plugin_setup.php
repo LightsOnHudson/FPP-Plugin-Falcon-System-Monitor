@@ -214,7 +214,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 					//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
 					$farenheight_temp_processor = celciusToFarenheight($temp_processor);
 					echo "<td> \n";
-					if($temp_processor != "" || $temp_processor != null) {
+					if(($temp_processor != "" || $temp_processor != null) && $temp_processor != "-24")  {
 						echo $temp_processor;
 						echo "(C) \n";
 						
@@ -222,7 +222,8 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 						echo "(F) \n";
 						echo "</td> \n";
 					} else {
-						//echo " \n";
+						//-24C is the default when there is no temp probe
+						echo "N/A \n";
 					}
 				} else {
 					if($DEBUG) {

@@ -176,6 +176,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	echo "</tr> \n";
 	
 	
+	foreach ($FALCON_IPS as $IP_ADDRESS) {
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
 	foreach($ALL_HARDWARE_VALUES as $key => $value) {
 		if(in_array($value,$HARDWARE_VALUES_READ)) {
@@ -183,7 +184,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 			
 	
 	
-			foreach ($FALCON_IPS as $IP_ADDRESS) {
+			
 				//get the falcon data for this IP address
 				$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 				echo "<tr> \n";

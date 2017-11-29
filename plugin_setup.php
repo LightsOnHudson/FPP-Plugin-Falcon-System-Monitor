@@ -149,13 +149,13 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	echo "<th colspan=\"4\"> \n";
 	echo "Falcon System Monitoring \n";
 	echo "</th> \n";
-	
+	echo "<tr> \n";
 	
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
 	foreach($ALL_HARDWARE_VALUES as $key => $value) {
 			if(in_array($value,$HARDWARE_VALUES_READ)) {
 			
-				echo "<tr> \n";
+				
 				echo "<td> \n";
 				echo $key;
 				echo "</td> \n";

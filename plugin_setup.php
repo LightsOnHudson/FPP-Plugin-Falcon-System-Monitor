@@ -217,9 +217,11 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 					}
 				} else {
 			
-				echo getFalconObjectValueFromData($falconSystemData, $value, "td");
-				echo "</td> \n";
-				echo "</tr> \n";
+					echo getFalconObjectValueFromData($falconSystemData, $value, "td");
+					echo "</td> \n";
+					echo "</tr> \n";
+				}
+			}
 		}
 	}
 	

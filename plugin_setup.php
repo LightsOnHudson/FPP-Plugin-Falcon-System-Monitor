@@ -29,7 +29,7 @@ logEntry("plugin update file: ".$pluginUpdateFile);
 
 //logEntry("open log file: ".$logFile);
 
-$ALL_HARDWARE_VALUES = array("UPTIME" => "fldUptime","Processor Temp" => "fldChipTemp");
+$ALL_HARDWARE_VALUES = array("UPTIME" => "fldUptime","Processor Temp" => "fldChipTemp", "Temp 1" => "fldTemp1", "Temp 2" => "fldTemp2", "Voltage 1" => "fldV1", "Voltage 2" => "fldV2");
 
 $DEBUG = false;
 

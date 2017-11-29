@@ -1,4 +1,39 @@
 <?php
+
+function printHardwareValues($HARDWARE_VALUES)
+
+
+{
+	
+	global $DEBUG, $ALL_HARDWARE_VALUES;
+	
+	
+	
+	
+	$HARDWARE_VALUES_READ = explode(",",$HARDWARE_VALUES);
+	//print_r($PLUGINS_READ);
+	
+	echo "<select multiple=\"multiple\" name=\"HARDWARE_VALUES[]\">";
+	
+	
+	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
+		foreach($ALL_HARDWARE_VALUES as $key => $value) {
+			//$HARDWARE_VALUE_TEMP = $value;
+		
+	//	if((substr($PLUGIN_INSTALLED_TEMP,0,1) != "." && substr($PLUGIN_INSTALLED_TEMP,0,1) != "_")) {
+			if(in_array($value,$ALL_HARDWARE_VALUES)) {
+				
+			echo "<option selected value=\"" . $value. "\">" . $key. "</option>";
+			} else {
+				
+				echo "<option value=\"" . $value. "\">" . $key. "</option>";
+			}
+		
+		$i++;
+	}
+	echo "</select>";
+}
+
 //get a specific falcon id object from an ip address status page
 function getFalconObjectValueFromData($falconData, $objectName, $objectType) {
 	

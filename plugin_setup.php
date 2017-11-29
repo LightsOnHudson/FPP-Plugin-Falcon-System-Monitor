@@ -29,7 +29,7 @@ logEntry("plugin update file: ".$pluginUpdateFile);
 
 //logEntry("open log file: ".$logFile);
 
-
+$ALL_HARDWARE_VALUES = array("UPTIME" => "fldUptime","Chip Temp" => "fldChipTemp");
 
 $DEBUG = false;
 
@@ -47,13 +47,13 @@ if(isset($_POST['submit']))
 	
 	
 	//$ENABLED=$_POST["ENABLED"];
-	$CONTROLLER_IPS = $_POST["CONTROLLER_IPS"];
+	$HARDWARE_VALUES= $_POST["HARDWARE_VALUES"];
 
 	//	echo "Writring config fie <br/> \n";
 
-
+	$PLUGINS =  implode(',', $_POST["PLUGINS"]);
 	WriteSettingToFile("CONTROLLER_IPS",urlencode($_POST["CONTROLLER_IPS"]),$pluginName);
-
+	WriteSettingToFile("HARDWARE_VALUES",$HARDWARE_VALUES,$pluginName);
 	
 
 } 
@@ -70,6 +70,7 @@ if (file_exists($pluginConfigFile))
 	//$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);
 	$ENABLED = urldecode($pluginSettings['ENABLED']);
 	$CONTROLLER_IPS = urldecode($pluginSettings['CONTROLLER_IPS']);
+	$HARDWARE_VALUES = $pluginSettings['HARDWARE_VALUES'];
 	
 	//test variables
 	$IP_ADDRESS = "10.0.0.106";
@@ -91,7 +92,8 @@ if (file_exists($pluginConfigFile))
 
 <p>Configuration:
 <ul>
-<li></li>
+<li>Configure the IP addresses that you want to monitor (comma separated)</li>
+<li>Select the values that you want to monitor from the selection box</li>
 </ul>
 
 <form method="post" action="http://<? echo $_SERVER['SERVER_ADDR'].":".$_SERVER['SERVER_PORT']?>/plugin.php?plugin=<?echo $pluginName;?>&page=plugin_setup.php">
@@ -113,6 +115,9 @@ echo "ENABLE PLUGIN: ";
 //}
 echo "<p/>\n";
 
+//print the hardware values available and wanting to see
+printHardwareValues($HARDWARE_VALUES);
+echo "<p/>\n";
 //get a list of falcon controllers
 echo "<table border=\"1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
 

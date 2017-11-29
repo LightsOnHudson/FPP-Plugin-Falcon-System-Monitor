@@ -16,7 +16,7 @@ function printHardwareValues($HARDWARE_VALUES)
 	echo "<select multiple=\"multiple\" name=\"HARDWARE_VALUES[]\">";
 	
 	
-	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
+//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
 		foreach($ALL_HARDWARE_VALUES as $key => $value) {
 			//$HARDWARE_VALUE_TEMP = $value;
 		

@@ -23,14 +23,14 @@ function printHardwareValues($HARDWARE_VALUES)
 	
 	
 //	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
-	foreach($HARDWARE_VALUES_READ as $key => $value) {
+	foreach($ALL_HARDWARE_VALUES as $key => $value) {
 			if($DEBUG) {
 				echo "Key : ".$key." value: ".$value."<br/> \n";
 			}
 			//$HARDWARE_VALUE_TEMP = $value;
 		
 	//	if((substr($PLUGIN_INSTALLED_TEMP,0,1) != "." && substr($PLUGIN_INSTALLED_TEMP,0,1) != "_")) {
-			if(in_array($value,$ALL_HARDWARE_VALUES)) {
+			if(in_array($value,$HARDWARE_VALUES_READ)) {
 				
 			echo "<option selected value=\"" . $value. "\">" . $key. "</option>";
 			} else {

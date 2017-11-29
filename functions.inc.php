@@ -12,8 +12,10 @@ function printHardwareValues($HARDWARE_VALUES)
 	
 	$HARDWARE_VALUES_READ = explode(",",$HARDWARE_VALUES);
 	if($DEBUG) {
+		echo "<pre> \n";
 		print_r($ALL_HARDWARE_VALUES);
-		print_r($HARDWARE_VALUES);
+		print_r($HARDWARE_VALUES_READ);
+		echo "</pre> \n";
 	}
 	//print_r($PLUGINS_READ);
 	
@@ -21,7 +23,7 @@ function printHardwareValues($HARDWARE_VALUES)
 	
 	
 //	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
-		foreach($ALL_HARDWARE_VALUES as $key => $value) {
+	foreach($HARDWARE_VALUES_READ as $key => $value) {
 			if($DEBUG) {
 				echo "Key : ".$key." value: ".$value."<br/> \n";
 			}

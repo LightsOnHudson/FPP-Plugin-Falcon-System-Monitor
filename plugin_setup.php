@@ -130,70 +130,100 @@ echo "<p/>\n";
 //get a list of falcon controllers
 echo "<table border=\"1\" cellspacing=\"3\" cellpadding=\"3\"> \n";
 
+$HARDWARE_VALUES_READ = explode(",",$HARDWARE_VALUES);
+if($DEBUG) {
+	echo "<pre> \n";
+	print_r($ALL_HARDWARE_VALUES);
+	print_r($HARDWARE_VALUES_READ);
+	echo "</pre> \n";
+}
+//print_r($PLUGINS_READ);
+
+
+
 
 
 if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
+	
+	$FALCON_IPS = explode(",",$CONTROLLER_IPS);
 	echo "<th colspan=\"4\"> \n";
 	echo "Falcon System Monitoring \n";
 	echo "</th> \n";
-	echo "<tr> \n";
 	
-	echo "<td> \n";
-	echo "IP Address \n";
-	echo "</td> \n";
-	echo "<td> \n";
-	echo "Hostname \n";
-	echo "</td> \n";
-	echo "<td> \n";
-	echo "Uptime \n";
-	echo "</td> \n";
-	echo "<td> \n";
-	echo "Processor Temp \n";
-	echo "</td> \n";
-	echo "<td> \n";
-	echo "Active/configured Universes \n";
-	echo "</td> \n";
+	
+	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
+	foreach($ALL_HARDWARE_VALUES as $key => $value) {
+			if(in_array($value,$HARDWARE_VALUES_READ)) {
+			
+				echo "<tr> \n";
+				echo "<td> \n";
+				echo $key;
+				echo "</td> \n";
+			} else {
+			
+			//
+			}
+		
+		
+	}
+	
 	echo "</tr> \n";
 	
-	$FALCON_IPS = explode(",",$CONTROLLER_IPS);
 	
-	foreach ($FALCON_IPS as $IP_ADDRESS) {
-		//get the falcon data for this IP address
-		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
-		echo "<tr> \n";
-		echo "<td> \n";
-		PrintFalconSystemsSelect();
-		echo $IP_ADDRESS;
-		echo "</td> \n";
-		
-		echo "<td> \n";
-		echo tryGetHost($IP_ADDRESS);
-		echo "</td> \n";
-		
-		echo "<td> \n";
-		echo getFalconObjectValueFromData($falconSystemData, "fldUptime", "td");
-		
-		echo "</td> \n";
-		$temp_processor = getFalconObjectValueFromData($falconSystemData, "fldChipTemp", "td");
-		//getFalconObjectValue($falconData, "fldChipTemp", "td");
-		//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
-		$farenheight_temp_processor = celciusToFarenheight($temp_processor);
-		echo "<td> \n";
-		if($temp_processor != "" || $temp_processor != null) {
-			echo $temp_processor;
-			echo "(C) \n";
+	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
+	foreach($ALL_HARDWARE_VALUES as $key => $value) {
+		if(in_array($value,$HARDWARE_VALUES_READ)) {
 			
-			echo $farenheight_temp_processor;
-			echo "(F) \n";
-		} else {
-			echo " \n";
+			
+	
+	
+			foreach ($FALCON_IPS as $IP_ADDRESS) {
+				//get the falcon data for this IP address
+				$falconSystemData = getAllFalconObjects($IP_ADDRESS);
+				echo "<tr> \n";
+				echo "<td> \n";
+				PrintFalconSystemsSelect();
+				echo $IP_ADDRESS;
+				echo "</td> \n";
+				
+				echo "<td> \n";
+				echo tryGetHost($IP_ADDRESS);
+				echo "</td> \n";
+				
+				echo "<td> \n";
+				if($value == "fldChipTemp") {
+				
+				
+				
+					$temp_processor = getFalconObjectValueFromData($falconSystemData, "fldChipTemp", "td");
+					//getFalconObjectValue($falconData, "fldChipTemp", "td");
+					//$temp_processor = getFalconObjectValue($IP_ADDRESS, "fldChipTemp", "td");
+					$farenheight_temp_processor = celciusToFarenheight($temp_processor);
+					echo "<td> \n";
+					if($temp_processor != "" || $temp_processor != null) {
+						echo $temp_processor;
+						echo "(C) \n";
+						
+						echo $farenheight_temp_processor;
+						echo "(F) \n";
+					} else {
+						echo " \n";
+					}
+			}
+			
+			else echo getFalconObjectValueFromData($falconSystemData, $value, "td");
+			echo "</td> \n";
+			echo "</tr> \n";
 		}
-		echo "</td> \n";
-		echo "<td> \n";
-		echo getFalconObjectValueFromData($falconSystemData, "lblUniverseCount", "label");
-		echo "</td> \n";
-		echo "</tr> \n";
 	}
+	}
+		
+		//echo "</td> \n";
+		//echo "<td> \n";
+		//echo getFalconObjectValueFromData($falconSystemData, "lblUniverseCount", "label");
+		//echo "</td> \n";
+		//echo "</tr> \n";
+	
 } else {
 	echo "<th colspan=\"3\"> \n";
 	echo "No controllers configured for monitoring, use the box below to enter them. Comma separated \n";

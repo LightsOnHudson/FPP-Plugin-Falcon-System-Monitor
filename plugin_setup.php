@@ -195,10 +195,11 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		if(in_array($value,$HARDWARE_VALUES_READ)) {
 	
 			
+				$pos = strpos(strtoupper($value), "TEMP");
 				
-				
-				if($value == "fldChipTemp") {
-				
+				//if($value == "fldChipTemp") {
+				//if the value is a temp - then run it through the processing of the temp to show the values
+				if($pos === true) {
 				
 				
 					$temp_processor = getFalconObjectValueFromData($falconSystemData, $value, "td");

@@ -48,6 +48,7 @@ if(isset($_POST['submit']))
 	
 	//$ENABLED=$_POST["ENABLED"];
 	$HARDWARE_VALUES= $_POST["HARDWARE_VALUES"];
+	
 
 	//	echo "Writring config fie <br/> \n";
 
@@ -59,12 +60,16 @@ if(isset($_POST['submit']))
 } 
 
 
+sleep(1);
+
 $pluginConfigFile = $settings['configDirectory'] . "/plugin." .$pluginName;
 if (file_exists($pluginConfigFile))
 	$pluginSettings = parse_ini_file($pluginConfigFile);
+
+	$DEBUG = urldecode($pluginSettings['DEBUG']);
 	
-	
-	
+	if($DEBUG)
+		print_r($HARDWARE_VALUES);
 	
 	
 	//$ENABLED = ReadSettingFromFile("ENABLED",$pluginName);

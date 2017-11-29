@@ -195,12 +195,19 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		if(in_array($value,$HARDWARE_VALUES_READ)) {
 	
 			
+			if($DEBUG) {
+				logEntry("Looking for the word TEMP in: ".$value);
+			}
 				$pos = strpos(strtoupper($value), "TEMP");
+				
 				
 				//if($value == "fldChipTemp") {
 				//if the value is a temp - then run it through the processing of the temp to show the values
-				if($pos === true) {
+				if($pos) {
 				
+					if($DEBUG) {
+						logEntry("We have a temperatur - calculating");
+					}
 				
 					$temp_processor = getFalconObjectValueFromData($falconSystemData, $value, "td");
 					//getFalconObjectValue($falconData, "fldChipTemp", "td");
@@ -218,6 +225,9 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 						//echo " \n";
 					}
 				} else {
+					if($DEBUG) {
+						logEntry("We do not have a temperatur - no calculating");
+					}
 					echo "<td> \n";
 					echo getFalconObjectValueFromData($falconSystemData, $value, "td");
 					echo "</td> \n";

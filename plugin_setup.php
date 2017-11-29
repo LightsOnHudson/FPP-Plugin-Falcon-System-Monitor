@@ -44,17 +44,20 @@ if(isset($_POST['submit']))
 {
 	
 
-	
+	$HARDWARE_VALUES_SELECTED = array();
 	
 	//$ENABLED=$_POST["ENABLED"];
 	$HARDWARE_VALUES= $_POST["HARDWARE_VALUES"];
 	
+	foreach ($HARDWARE_VALUES as $key => $value) {
+		array_push($HARDWARE_VALUES_SELECTED, $value);
+	}
 
 	//	echo "Writring config fie <br/> \n";
 
-	$PLUGINS =  implode(',', $HARDWARE_VALUES);
+	$HARDWARE_VALUES_TO_SAVE =  implode(',', $HARDWARE_VALUES_SELECTED);
 	WriteSettingToFile("CONTROLLER_IPS",urlencode($_POST["CONTROLLER_IPS"]),$pluginName);
-	WriteSettingToFile("HARDWARE_VALUES",$HARDWARE_VALUES,$pluginName);
+	WriteSettingToFile("HARDWARE_VALUES",$HARDWARE_VALUES_TO_SAVE,$pluginName);
 	
 
 } 

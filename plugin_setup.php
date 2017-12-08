@@ -179,7 +179,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
 		
-		$tags = get_meta_tags($IP_ADDRESS);
+		//$tags = get_meta_tags($IP_ADDRESS);
 		
 		// Notice how the keys are all lowercase now, and
 		// how . was replaced by _ in the key.
@@ -187,7 +187,8 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		//echo $tags['keywords'];     // php documentation
 		//echo $tags['description'];  // a php manual
 		//echo $tags['geo_position']; // 49.33;-86.59
-		$title = $tags['title'];
+		$tags = extract_tags_from_url($IP_ADDRESS);
+		print_r($tags);
 		//get the falcon data for this IP address
 		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 		echo "<tr> \n";
@@ -198,7 +199,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		
 		echo "<td> \n";
 		echo $title;
-		//echo tryGetHost($IP_ADDRESS);
+		echo tryGetHost($IP_ADDRESS);
 		echo "</td> \n";
 		
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {

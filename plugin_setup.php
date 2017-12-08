@@ -153,8 +153,9 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	echo "<td> \n";
 	echo "IP Address \n";
 	echo "</td> \n";
-	echo "<td> \n";
-	echo "Hostname \n";
+;
+	echo "<td align=\"center\"> \n";
+	echo "Hostname & Firmware\n";
 	echo "</td> \n";
 	
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {
@@ -162,7 +163,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 			if(in_array($value,$HARDWARE_VALUES_READ)) {
 			
 				
-				echo "<td> \n";
+				echo "<td align=\"center\"> \n";
 				echo $key;
 				echo "</td> \n";
 			} else {
@@ -178,6 +179,10 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
 		
+		//$url = 'http://some.url.com';
+		preg_match("/<title>(.+)<\/title>/siU", file_get_contents($IP_ADDRESS), $matches);
+		$title = $matches[1];
+		
 		//get the falcon data for this IP address
 		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 		echo "<tr> \n";
@@ -187,7 +192,8 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		echo "</td> \n";
 		
 		echo "<td> \n";
-		echo tryGetHost($IP_ADDRESS);
+		echo $title;
+		//echo tryGetHost($IP_ADDRESS);
 		echo "</td> \n";
 		
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {

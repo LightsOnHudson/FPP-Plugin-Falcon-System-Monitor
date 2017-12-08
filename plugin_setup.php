@@ -179,7 +179,8 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
 		
-		$html = file_get_contents_curl("http://example.com/");
+		$url = "http://".$IP_ADDRESS;
+		$html = file_get_contents_curl($url);
 		
 		//parsing begins here:
 		$doc = new DOMDocument();

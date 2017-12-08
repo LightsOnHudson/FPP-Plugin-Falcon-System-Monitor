@@ -179,18 +179,30 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
 		
-		//$tags = get_meta_tags($IP_ADDRESS);
+		$html = file_get_contents_curl("http://example.com/");
 		
-		// Notice how the keys are all lowercase now, and
-		// how . was replaced by _ in the key.
-		//echo $tags['author'];       // name
-		//echo $tags['keywords'];     // php documentation
-		//echo $tags['description'];  // a php manual
-		//echo $tags['geo_position']; // 49.33;-86.59
-		$url = "http://".$IP_ADDRESS;
-		$tags = extract_tags_from_url($url);
-		print_r($tags);
-		$title = $tags['title'];
+		//parsing begins here:
+		$doc = new DOMDocument();
+		@$doc->loadHTML($html);
+		$nodes = $doc->getElementsByTagName('title');
+		
+		//get and display what you need:
+		$title = $nodes->item(0)->nodeValue;
+		
+		$metas = $doc->getElementsByTagName('meta');
+		
+		for ($i = 0; $i < $metas->length; $i++)
+		{
+			$meta = $metas->item($i);
+			if($meta->getAttribute('name') == 'description')
+				$description = $meta->getAttribute('content');
+				if($meta->getAttribute('name') == 'keywords')
+					$keywords = $meta->getAttribute('content');
+		}
+		
+		//echo "Title: $title". '<br/><br/>';
+		//echo "Description: $description". '<br/><br/>';
+		
 		//get the falcon data for this IP address
 		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 		echo "<tr> \n";

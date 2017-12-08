@@ -179,10 +179,15 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 	
 	foreach ($FALCON_IPS as $IP_ADDRESS) {
 		
-		//$url = 'http://some.url.com';
-		preg_match("/<title>(.+)<\/title>/siU", file_get_contents($IP_ADDRESS), $matches);
-		$title = $matches[1];
+		$tags = get_meta_tags($IP_ADDRESS);
 		
+		// Notice how the keys are all lowercase now, and
+		// how . was replaced by _ in the key.
+		//echo $tags['author'];       // name
+		//echo $tags['keywords'];     // php documentation
+		//echo $tags['description'];  // a php manual
+		//echo $tags['geo_position']; // 49.33;-86.59
+		$title = $tags['title'];
 		//get the falcon data for this IP address
 		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 		echo "<tr> \n";

@@ -214,7 +214,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		
 		echo "<td> \n";
 		echo $title;
-		echo tryGetHost($IP_ADDRESS);
+		//echo tryGetHost($IP_ADDRESS);
 		echo "</td> \n";
 		
 	//	for($i=0;$i<=count($ALL_HARDWARE_VALUES)-1;$i++) {

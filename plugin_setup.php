@@ -187,8 +187,10 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		//echo $tags['keywords'];     // php documentation
 		//echo $tags['description'];  // a php manual
 		//echo $tags['geo_position']; // 49.33;-86.59
-		$tags = extract_tags_from_url($IP_ADDRESS);
+		$url = "http://".$IP_ADDRESS;
+		$tags = extract_tags_from_url($url);
 		print_r($tags);
+		$title = $tags['title'];
 		//get the falcon data for this IP address
 		$falconSystemData = getAllFalconObjects($IP_ADDRESS);
 		echo "<tr> \n";

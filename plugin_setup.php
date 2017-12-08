@@ -183,7 +183,7 @@ if($CONTROLLER_IPS != "" || $CONTROLLER_IPS != null) {
 		echo "<tr> \n";
 		echo "<td> \n";
 		PrintFalconSystemsSelect();
-		echo "<a href=\"".$IP_ADDRESS."\" target=\"_top\">".$IP_ADDRESS."</a>";
+		echo "<a href=\"http://".$IP_ADDRESS."\" target=\"_top\">".$IP_ADDRESS."</a>";
 		echo "</td> \n";
 		
 		echo "<td> \n";
